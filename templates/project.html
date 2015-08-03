@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col s6">
+        <h3> {{ project.name }}</h3>
+        <a href="qgis://{{project.name}}">Open in QGIS</a>
+        <ul class="collapsible" data-collapsible="expandable">
+            {% for value in project.layers()|sort %}
+            <li>
+                <div class="collapsible-header">{{ value }}</div>
+                <div class="collapsible-body"><p>{{ value }}</p></div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col s6">
+    </div>
+</div>
+{% endblock %}
