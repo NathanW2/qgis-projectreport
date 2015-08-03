@@ -6,10 +6,8 @@ from flask import Flask, render_template
 from models.project import Project
 
 app = Flask(__name__)
-
-projectpaths = [
-    r"F:\gis_data"
-]
+app.config.from_pyfile("settings.cfg")
+projectpaths = app.config['PROJECT_PATHS']
 
 project_index = {}
 projects = []
@@ -45,5 +43,5 @@ def _init():
 
 if __name__ == "__main__":
     _init()
-    app.run(debug=True)
+    app.run()
 
